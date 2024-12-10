@@ -14,8 +14,7 @@ function PostsShow() {
     const [post, setPost] = useState({})
     const { title, image, content, tags = [], category } = post
 
-    const navigate = useNavigate()
-
+    //FETCH
     function fetchPost() {
         axios.get(`${API_BASE_URI}posts/${id}`)
             .then((res) => {
@@ -30,12 +29,29 @@ function PostsShow() {
         fetchPost()
     }, [id])
 
+    //NAVIGATE
+    const navigate = useNavigate()
+
+    function goToPosts() {
+        navigate(`/posts`)
+    }
+
+    function goBack() {
+        let backId = parseInt(id) - 1
+        navigate(`/posts/${backId}`)
+    }
+
+    function goForward() {
+        let nextId = parseInt(id) + 1
+        navigate(`/posts/${nextId}`)
+    }
+
 
     return (
         <main>
             <section className={style.hero_section}>
                 <figure className={style.hero_figure}>
-                    <button className={style.back_button} onClick={() => navigate(-1)}>&larr;</button>
+                    <button className={style.back_to_post_button} onClick={goToPosts}>&larr;</button>
                     <img className={style.post_figure} src={`${API_BASE_URI}${image}`} />
                 </figure>
             </section>
@@ -52,6 +68,13 @@ function PostsShow() {
                             <p>Difficoltà: <span className={category === "difficile" ? style.difficile : style.facile}>{category}</span></p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <section className={style.pages_section}>
+                <div className={style.pages}>
+                    <button onClick={goBack}>&larr;</button>
+                    <button onClick={goForward}>&rarr;</button>
                 </div>
             </section>
         </main>

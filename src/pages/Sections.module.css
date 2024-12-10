@@ -5,5 +5,5 @@ main {
 section {
     display: flex;
     justify-content: center;
-    padding-bottom: 2rem;
+    padding: 1rem 2rem;
 }

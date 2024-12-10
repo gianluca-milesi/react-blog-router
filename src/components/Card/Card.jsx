@@ -8,16 +8,16 @@ function Card({ item = {}, deleteItem = () => { } }) {
     const { id, title, image, content } = item
 
     return (
-        <Link to={`/posts/${id}`}>
-            <div className={style.card}>
+        <div className={style.card}>
+            <Link to={`/posts/${id}`}>
                 <img src={`${API_BASE_URI}${image}`} className={style.card_figure} />
                 <div className={style.card_body}>
                     <h3>{title}</h3>
                     <p>{content}</p>
                 </div>
-                <button className={style.delete_button} onClick={() => deleteItem(id)}>Elimina</button>
-            </div>
-        </Link>
+            </Link>
+            <button className={style.delete_button} onClick={() => deleteItem(id)}>Elimina</button>
+        </div>
     )
 }
 
