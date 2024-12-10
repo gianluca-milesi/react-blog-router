@@ -3,8 +3,9 @@ import sectionsStyle from "../../Sections.module.css"
 import placeholder from "../../../assets/placeholder.png"
 import axios from "axios"
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { API_BASE_URI } from "../../../config"
+import Tags from "../../../components/Tags/Tags.jsx"
 
 
 function PostsShow() {
@@ -12,6 +13,8 @@ function PostsShow() {
     const { id } = useParams()
     const [post, setPost] = useState({})
     const { title, image, content, tags = [], category } = post
+
+    const navigate = useNavigate()
 
     function fetchPost() {
         axios.get(`${API_BASE_URI}posts/${id}`)
@@ -30,22 +33,24 @@ function PostsShow() {
 
     return (
         <main>
-            <section className="hero">
-                <div className="container">
-                    <h1>{title}</h1>
-                    <figure>
-                        <button className="button_back">Indietro</button>
-                        <img src="..." />
-                    </figure>
-                </div>
+            <section className={style.hero_section}>
+                <figure className={style.hero_figure}>
+                    <button className={style.back_button} onClick={() => navigate(-1)}>&larr;</button>
+                    <img className={style.post_figure} src={`${API_BASE_URI}${image}`} />
+                </figure>
             </section>
 
-            <section className="information">
+            <section className={style.information_section}>
                 <div className="container">
-                    <div className="information_body">
-                        <p>{content}</p>
-                        <p>{tags}</p>
-                        <p>{category}</p>
+                    <div className={style.information_body}>
+                        <div className={style.description}>
+                            <h1>{title}</h1>
+                            <p>{content}</p>
+                        </div>
+                        <div className={style.categories}>
+                            <Tags tags={tags} />
+                            <p>Difficoltà: <span className={category === "difficile" ? style.difficile : style.facile}>{category}</span></p>
+                        </div>
                     </div>
                 </div>
             </section>
