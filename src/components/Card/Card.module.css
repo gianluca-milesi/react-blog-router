@@ -4,7 +4,12 @@
     align-items: flex-end;
     gap: 1rem;
     margin: 0.5rem;
-    height: 100%;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.card:hover{
+    scale: 1.025;
 }
 
 .card_figure {
@@ -26,4 +31,9 @@
     color: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    z-index: 10;
+}
+
+.delete_button:hover{
+    scale: 1.025;
 }
