@@ -1,4 +1,6 @@
+import { API_BASE_URI } from "../../config.js"
 import style from "./Card.module.css"
+
 
 function Card({ item = {}, deleteItem = () => { } }) {
 
@@ -6,7 +8,7 @@ function Card({ item = {}, deleteItem = () => { } }) {
 
     return (
         <div className={style.card}>
-            <img src={image} className={style.card_figure} />
+            <img src={`${API_BASE_URI}${image}`} className={style.card_figure} />
             <div className={style.card_body}>
                 <h3>{title}</h3>
                 <p>{content}</p>
