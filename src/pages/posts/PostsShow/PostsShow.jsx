@@ -52,7 +52,7 @@ function PostsShow() {
             <section className={style.hero_section}>
                 <figure className={style.hero_figure}>
                     <button className={style.back_to_post_button} onClick={goToPosts}>&larr;</button>
-                    <img className={style.post_figure} src={`${API_BASE_URI}${image}`} />
+                    <img className={style.post_figure} src={`${API_BASE_URI}${image}` || placeholder} />
                 </figure>
             </section>
 
