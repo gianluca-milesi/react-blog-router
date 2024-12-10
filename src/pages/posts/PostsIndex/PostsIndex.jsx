@@ -1,13 +1,13 @@
-import style from "./PostsList.module.css"
+import style from "./PostsIndex.module.css"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import sectionsStyle from "../Sections.module.css"
-import { API_BASE_URI } from "../../config.js"
-import SearchBar from "../../components/SearchBar/SearchBar.jsx"
-import Card from "../../components/Card/Card.jsx"
+import sectionsStyle from "../../Sections.module.css"
+import { API_BASE_URI } from "../../../config.js"
+import SearchBar from "../../../components/SearchBar/SearchBar.jsx"
+import Card from "../../../components/Card/Card.jsx"
 
 
-function PostsList() {
+function PostsIndex() {
 
     const [posts, setPosts] = useState([])
 
@@ -89,4 +89,4 @@ function PostsList() {
     )
 }
 
-export default PostsList
+export default PostsIndex
